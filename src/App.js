@@ -3,11 +3,11 @@ import "milligram";
 
 
 function App() {
-    const [title, setTitle] = useState();
+    const [title, setTitle] = useState("");
     const [year, setYear] = useState();
     const [movies, setMovies] = useState([]);
 
-    let feedback
+    let feedback;
         if (title.length < 5){feedback='Title is too short';}
             else if (title.length < 40){feedback='Title is just right';}
             else {feedback='Title is too long';}
@@ -25,10 +25,10 @@ function App() {
             </ul>
             <h2>Add movie</h2>
             <label>Title</label>
-            {title.length > 0 && <div>{feedback}</div>}
             <input
                 type="text" value={title} onChange={handleChange} placeholder="Enter a movie title"
             />
+            {title.length > 0 && <div>{feedback}</div>}
             <label>Year</label>
             <input
                 type="text" value={year} onChange={(event) => setYear(event.target.value)} placeholder="Enter a movie year"
