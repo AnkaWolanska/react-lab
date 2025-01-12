@@ -31,7 +31,6 @@ function App() {
             {title.length > 0 && <div>{feedback}</div>}
             <input type="text" value={title} onChange={handleChange}/>
             <button type="button" onClick={() => alert(title)}> Show title
-
             </button>
         </div>
     );
