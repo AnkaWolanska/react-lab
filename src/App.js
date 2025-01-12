@@ -27,7 +27,8 @@ function App() {
             <h1>My favourite movies to watch</h1>
             <h2>Title</h2>
             <ul>
-                {movies.map((movie) => <li key={movie.title}>{movie.title}</li>)}</ul>
+                {movies.map((movie) => <li key={movie.title}>{movie.title}</li>)}
+            </ul>
             <h2>My favourite movie for today is {title}</h2>
             {title.length > 0 && <div>{feedback}</div>}
             <input type="text" value={title} onChange={handleChange}/>
