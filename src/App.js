@@ -25,22 +25,14 @@ function App() {
             </ul>
             <h2>Add movie</h2>
             <label>Title</label>
-            <input
-                type="text"
-                value={title}
-                onChange={handleChange}
-                placeholder="Enter a movie title"
-            />
             {title.length > 0 && <div>{feedback}</div>}
+            <input
+                type="text" value={title} onChange={handleChange} placeholder="Enter a movie title"
+            />
             <label>Year</label>
             <input
-                type="text"
-                value={year}
-                onChange={(event) => setYear(event.target.value)}
-                placeholder="Enter a movie year"
+                type="text" value={year} onChange={(event) => setYear(event.target.value)} placeholder="Enter a movie year"
             />
-            {title.length > 0 && <div>{feedback}</div>}
-
             <button type="button" onClick={() => setMovies([...movies, {title, year}])}>
                 Add New Movie
             </button>
