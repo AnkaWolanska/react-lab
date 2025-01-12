@@ -3,7 +3,8 @@ import "milligram";
 
 
 function App() {
-    const [title, setTitle, year, setYear] = useState('Wall-E');
+    const [title, setTitle] = useState();
+    const [year, setYear] = useState();
     const [movies, setMovies] = useState([]);
 
     let feedback
@@ -15,20 +16,15 @@ function App() {
         setTitle(event.target.value);
     }
 
-    function chandleMovieAdd() {
-        const newMovie = {title: title};
-        setMovies([...movies, newMovie]);
-    }
-
     return (
         <div>
             <h1>My favourite movies to watch</h1>
             <h2>Titles</h2>
             <ul>
-                {movies.map((movie) => <li key={movie.title}>{movie.title}</li>)}
+                {movies.map((movie) => <li key={movie.title}>{movie.title}({movie.year})</li>)}
             </ul>
             <h2>Add movie</h2>
-            <h3>Title</h3>
+            <label>Title</label>
             <input
                 type="text"
                 value={title}
@@ -36,8 +32,16 @@ function App() {
                 placeholder="Enter a movie title"
             />
             {title.length > 0 && <div>{feedback}</div>}
+            <label>Year</label>
+            <input
+                type="text"
+                value={year}
+                onChange={(event) => setYear(event.target.value)}
+                placeholder="Enter a movie year"
+            />
+            {title.length > 0 && <div>{feedback}</div>}
 
-            <button type="button" onClick={chandleMovieAdd}>
+            <button type="button" onClick={() => setMovies([...movies, {title, year}])}>
                 Add New Movie
             </button>
         </div>
