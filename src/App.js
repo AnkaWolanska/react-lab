@@ -4,12 +4,12 @@ import "milligram";
 
 function App() {
     const [title, setTitle] = useState('Wall-E');
-    const movies = [
+    const [movies, setMovies] = useState([
     {title: "Wall-E"},
     {title: "Pulp Fiction"},
     {title: "Matrix"},
     {title: "1670"},
-];
+]);
 
     let feedback
         if (title.length < 5){feedback='Title is too short';}
@@ -18,6 +18,14 @@ function App() {
 
     function handleChange(event) {
         setTitle(event.target.value);
+    }
+
+    function addMovie() {
+        if (title.trim() && !movies.some(movie => movie.title === title)) {
+            setMovies([...movies, { title }]);
+        } else {
+            alert("Movie title is either empty or already exists!");
+        }
     }
 
     return (
@@ -29,8 +37,14 @@ function App() {
             </ul>
             <h2>My favourite movie for today is {title}</h2>
             {title.length > 0 && <div>{feedback}</div>}
-            <input type="text" value={title} onChange={handleChange}/>
-            <button type="button" onClick={() => alert(title)}> Show title
+            <input
+                type="text"
+                value={title}
+                onChange={handleChange}
+                placeholder="Enter a movie title"
+            />
+            <button type="button" onClick={addMovie}>
+                Add Movie
             </button>
         </div>
     );
