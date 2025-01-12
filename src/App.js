@@ -16,7 +16,7 @@ function App() {
         <div>
             <h1>My favourite movies to watch</h1>
             <h2>My favourite movie for today is {title}</h2>
-            <div>{feedback}</div>
+            {title.length > 0 && <div>{feedback}</div>}
             <input type="text" value={title} onChange={handleChange}/>
             <button type="button" onClick={() => alert(title)}> Pokaż tytuł
             </button>
