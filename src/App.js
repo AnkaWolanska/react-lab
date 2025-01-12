@@ -3,13 +3,8 @@ import "milligram";
 
 
 function App() {
-    const [title, setTitle] = useState('Wall-E');
-    const [movies, setMovies] = useState([
-    {title: "Wall-E"},
-    {title: "Pulp Fiction"},
-    {title: "Matrix"},
-    {title: "1670"},
-]);
+    const [title, setTitle, year, setYear] = useState('Wall-E');
+    const [movies, setMovies] = useState([]);
 
     let feedback
         if (title.length < 5){feedback='Title is too short';}
@@ -20,12 +15,9 @@ function App() {
         setTitle(event.target.value);
     }
 
-    function addMovie() {
-        if (title.trim() && !movies.some(movie => movie.title === title)) {
-            setMovies([...movies, { title }]);
-        } else {
-            alert("Movie title is either empty or already exists!");
-        }
+    function chandleMovieAdd() {
+        const newMovie = {title: title};
+        setMovies([...movies, newMovie]);
     }
 
     return (
@@ -35,16 +27,18 @@ function App() {
             <ul>
                 {movies.map((movie) => <li key={movie.title}>{movie.title}</li>)}
             </ul>
-            <h2>My favourite movie for today is {title}</h2>
-            {title.length > 0 && <div>{feedback}</div>}
+            <h2>Add movie</h2>
+            <h3>Title</h3>
             <input
                 type="text"
                 value={title}
                 onChange={handleChange}
                 placeholder="Enter a movie title"
             />
-            <button type="button" onClick={addMovie}>
-                Add Movie
+            {title.length > 0 && <div>{feedback}</div>}
+
+            <button type="button" onClick={chandleMovieAdd}>
+                Add New Movie
             </button>
         </div>
     );
