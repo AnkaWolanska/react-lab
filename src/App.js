@@ -20,10 +20,6 @@ function App() {
         setTitle(event.target.value);
     }
 
-    function handleShowMovieClick(){
-                alert(title);
-    }
-
     return (
         <div>
             <h1>My favourite movies to watch</h1>
@@ -34,7 +30,7 @@ function App() {
             <h2>My favourite movie for today is {title}</h2>
             {title.length > 0 && <div>{feedback}</div>}
             <input type="text" value={title} onChange={handleChange}/>
-            <button type="button" onClick={handleShowMovieClick}> Show title
+            <button type="button" onClick={() => alert(title)}> Show title
             </button>
         </div>
     );
